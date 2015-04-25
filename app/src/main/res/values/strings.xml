@@ -6,4 +6,8 @@
     <string name="title_activity_splash">Splash</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="notification_title"> This is a simple example</string>
+    <string name="notification_content"> This is the content</string>
+    <string name="big_notification"> This is the big notification that will appear when you enlarge the screennnn</string>
 </resources>

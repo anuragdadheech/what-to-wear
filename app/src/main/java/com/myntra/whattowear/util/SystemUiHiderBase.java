@@ -1,4 +1,4 @@
-package com.myntra.whattowear.util;
+package com.myntra.whatToWear.util;
 
 import android.app.Activity;
 import android.view.View;

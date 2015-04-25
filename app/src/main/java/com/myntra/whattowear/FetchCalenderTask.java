@@ -1,4 +1,4 @@
-package com.myntra.whattowear;
+package com.myntra.whatToWear;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.CalendarContract;
 import android.util.Log;
-import android.widget.TextView;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;

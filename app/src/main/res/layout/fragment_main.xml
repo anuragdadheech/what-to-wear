@@ -25,7 +25,12 @@
         <TextView android:id="@+id/weather_desc" android:layout_width="match_parent" android:layout_height="wrap_content" />
         <TextView android:id="@+id/weather_humidity" android:layout_width="match_parent" android:layout_height="wrap_content" />
         <TextView android:id="@+id/calender_details" android:layout_width="match_parent" android:layout_height="wrap_content" />
-
+        <Button
+            android:id="@+id/button_hello"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="click me"/>
     </LinearLayout>
 
 
