@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,6 +49,97 @@ public class MainActivity extends ActionBarActivity {
     static TextView humidity;
     static TextView calenderData;
     static ProgressBar spinner;
+
+    SparseArray<String> weatherArray = new SparseArray<String>()
+    {{
+            put(200, "climacons_cls");
+            put(201, "climacons_cls");
+            put(202, "climacons_cls");
+            put(210, "climacons_cls");
+            put(211, "climacons_cls");
+            put(212, "climacons_cls");
+            put(221, "climacons_cls");
+            put(230, "climacons_cls");
+            put(231, "climacons_cls");
+            put(232, "climacons_cls");
+
+            put(300, "climacons_cds");
+            put(301, "climacons_cds");
+            put(302, "climacons_cds");
+            put(310, "climacons_cds");
+            put(311, "climacons_cds");
+            put(312, "climacons_cds");
+            put(313, "climacons_cds");
+            put(314, "climacons_cds");
+            put(321, "climacons_cds");
+
+
+            put(500, "climacons_crs");
+            put(501, "climacons_crs");
+            put(502, "climacons_crs");
+            put(503, "climacons_crs");
+            put(504, "climacons_crs");
+            put(511, "climacons_ccs");
+            put(520, "climacons_cds");
+            put(521, "climacons_cds");
+            put(522, "climacons_cds");
+            put(531, "climacons_cds");
+
+
+            put(600, "climacons_ccs");
+            put(601, "climacons_ccs");
+            put(602, "climacons_ccs");
+            put(611, "climacons_ccs");
+            put(612, "climacons_ccs");
+            put(615, "climacons_ccs");
+            put(616, "climacons_ccs");
+            put(620, "climacons_ccs");
+            put(621, "climacons_ccs");
+            put(622, "climacons_ccs");
+
+
+            put(701, "climacons_cws");
+            put(711, "climacons_cws");
+            put(721, "climacons_cws");
+            put(731, "climacons_cws");
+            put(741, "climacons_cws");
+            put(751, "climacons_cws");
+            put(761, "climacons_cws");
+            put(762, "climacons_cws");
+            put(771, "climacons_cws");
+            put(781, "climacons_cws");
+
+
+
+            put(800, "climacons_sun");
+            put(801, "climacons_cs");
+            put(802, "climacons_css");
+            put(803, "climacons_ccs");
+            put(804, "climacons_ccs");
+
+
+            put(900, "climacons_cl");
+            put(901, "climacons_cl");
+            put(902, "climacons_cl");
+
+            put(903, "climacons_css");
+            put(904, "climacons_sun");
+            put(905, "climacons_wind");
+            put(906, "climacons_ccs");
+
+            put(951, "climacons_wind");
+            put(952, "climacons_wind");
+            put(953, "climacons_wind");
+            put(954, "climacons_wind");
+            put(955, "climacons_wind");
+            put(956, "climacons_wind");
+            put(957, "climacons_wind");
+            put(958, "climacons_wind");
+            put(959, "climacons_wind");
+            put(960, "climacons_cl");
+            put(961, "climacons_cl");
+            put(962, "climacons_cl");
+        }};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
