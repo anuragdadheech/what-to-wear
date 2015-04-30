@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.myntra.whattowear" >
 
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -27,6 +26,18 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_splash"
             android:theme="@style/FullscreenTheme" >
+        </activity>
+        <activity
+            android:name=".WeatherActivityDetail"
+            android:label="@string/title_activity_weather_activity_detail" >
+        </activity>
+        <activity
+            android:name=".ProductDetail"
+            android:label="@string/title_activity_product_detail" >
+        </activity>
+        <activity
+            android:name=".PDP"
+            android:label="@string/title_activity_pdp" >
         </activity>
     </application>
 

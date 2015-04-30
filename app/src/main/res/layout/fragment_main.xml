@@ -1,34 +1,284 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:coverflow="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:orientation="vertical"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MainActivity$PlaceholderFragment">
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_layout"
+        android:paddingTop="10dp"
         android:orientation="vertical">
 
-        <TextView android:id="@+id/date" android:layout_width="match_parent"  android:layout_height="wrap_content" />
-        <TextView android:id="@+id/day" android:layout_width="match_parent"  android:layout_height="wrap_content" />
-        <TextView android:id="@+id/weather_code" android:layout_width="match_parent"  android:layout_height="wrap_content" />
-        <TextView android:id="@+id/weather_condition" android:layout_width="match_parent" android:layout_height="wrap_content" />
-        <TextView android:id="@+id/weather_desc" android:layout_width="match_parent" android:layout_height="wrap_content" />
-        <TextView android:id="@+id/weather_humidity" android:layout_width="match_parent" android:layout_height="wrap_content" />
-        <TextView android:id="@+id/calender_details" android:layout_width="match_parent" android:layout_height="wrap_content" />
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/loader_weather"
+            android:gravity="center"
+            android:text="Fetching weather details for your area"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/loader_calendar"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:text="Fetching today's calendar"
+            android:visibility="gone"
+            android:layout_height="wrap_content" />
+
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_weather"
+            card_view:cardUseCompatPadding="true"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:visibility="invisible"
+            card_view:cardCornerRadius="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/weatherIcon"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/weather_text"
+                        android:textSize="15sp"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/meeting_text"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:textSize="28sp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/meeting_text_static"
+                        android:gravity="center_horizontal"
+                        android:textSize="15sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/loader_clothes"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Fetching perfect designs to suit your day"
+            android:visibility="gone"
+            android:layout_height="wrap_content" />
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_top_today"
+            android:layout_marginBottom="10dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:elevation="10dp"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            card_view:cardCornerRadius="2dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="10dp"
+                    android:id="@+id/image_top_today"
+                    android:adjustViewBounds="true"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:paddingTop="35px"
+                        android:layout_height="match_parent"
+                        android:text="Today's Selection | Top"
+                        android:textStyle="bold|italic"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_bottom_today"
+            android:layout_marginBottom="10dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:elevation="10dp"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            card_view:cardCornerRadius="2dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:padding="10dp"
+                    android:id="@+id/image_bottom_today"
+                    android:adjustViewBounds="true"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="35px"
+                        android:text="Today's Selection | Bottom"
+                        android:textStyle="bold|italic"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_top"
+            android:layout_marginBottom="10dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:visibility="invisible"
+            tools:context="it.moondroid.carousellayoutdemo.CoverFlowActivity"
+            card_view:cardCornerRadius="2dp">
+
+            <it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow
+                android:id="@+id/coverflow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                coverflow:coverHeight="@dimen/cover_height"
+                coverflow:coverWidth="@dimen/cover_width"
+                coverflow:maxScaleFactor="1.5"
+                coverflow:reflectionGap="0px"
+                coverflow:rotationThreshold="0.5"
+                coverflow:scalingThreshold="0.5"
+                coverflow:spacing="0.6" />
+            <TextSwitcher
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_bottom"
+            android:layout_marginBottom="10dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:visibility="invisible"
+            tools:context="it.moondroid.carousellayoutdemo.CoverFlowActivity"
+            card_view:cardCornerRadius="2dp">
+
+            <it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow
+                android:id="@+id/coverflow1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                coverflow:coverHeight="@dimen/cover_height"
+                coverflow:coverWidth="@dimen/cover_width"
+                coverflow:maxScaleFactor="1.5"
+                coverflow:reflectionGap="0px"
+                coverflow:rotationThreshold="0.5"
+                coverflow:scalingThreshold="0.5"
+                coverflow:spacing="0.6" />
+            <TextSwitcher
+                android:id="@+id/title1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true" />
+
+        </android.support.v7.widget.CardView>
+
+        <TextView android:id="@+id/date" android:layout_width="match_parent"  android:layout_height="wrap_content" android:visibility="gone" />
+        <TextView android:id="@+id/day" android:layout_width="match_parent"  android:layout_height="wrap_content" android:visibility="gone" />
+        <TextView android:id="@+id/weather_code" android:layout_width="match_parent"  android:layout_height="wrap_content" android:visibility="gone" />
+        <TextView android:id="@+id/weather_condition" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone" />
+        <TextView android:id="@+id/weather_desc" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone" />
+        <TextView android:id="@+id/weather_humidity" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone" />
+        <TextView android:id="@+id/calender_details" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone" />
 
     </LinearLayout>
 
 
 
 
-</RelativeLayout>
+</ScrollView>
