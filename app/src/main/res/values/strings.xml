@@ -6,7 +6,9 @@
     <string name="title_activity_splash">Splash</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
     <string name="title_activity_weather_activity_detail">Insights</string>
     <string name="title_activity_product_detail">WardRobe Item</string>
     <string name="title_activity_pdp">Product Detail Page</string>
+
 </resources>

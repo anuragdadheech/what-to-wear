@@ -1,4 +1,4 @@
-package com.myntra.whattowear;
+package com.myntra.whattoWear;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;

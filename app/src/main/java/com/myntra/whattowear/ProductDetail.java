@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.myntra.whatToWear.R;
 import com.squareup.picasso.Picasso;
 
 

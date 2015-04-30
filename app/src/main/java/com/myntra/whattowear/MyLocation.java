@@ -1,4 +1,4 @@
-package com.myntra.whattowear;
+package com.myntra.whatToWear;
 
 import android.content.Context;
 import android.content.Intent;

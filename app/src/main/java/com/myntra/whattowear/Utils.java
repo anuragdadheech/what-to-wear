@@ -1,4 +1,4 @@
-package com.myntra.whattowear;
+package com.myntra.whatToWear;
 
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;

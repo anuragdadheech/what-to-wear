@@ -1,6 +1,6 @@
-package com.myntra.whattowear;
+package com.myntra.whatToWear;
 
-import com.myntra.whattowear.util.SystemUiHider;
+import com.myntra.whatToWear.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

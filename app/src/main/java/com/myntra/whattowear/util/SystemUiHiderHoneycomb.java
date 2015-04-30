@@ -1,4 +1,4 @@
-package com.myntra.whattowear.util;
+package com.myntra.whatToWear.util;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

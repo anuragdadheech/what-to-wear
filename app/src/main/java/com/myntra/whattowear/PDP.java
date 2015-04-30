@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
+import com.myntra.whatToWear.R;
 import com.squareup.picasso.Picasso;
 
 

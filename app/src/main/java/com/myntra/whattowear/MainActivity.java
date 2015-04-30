@@ -1,4 +1,5 @@
-package com.myntra.whattowear;
+package com.myntra.whatToWear;
+
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -17,8 +18,20 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.CalendarContract;
-import android.support.v7.app.ActionBarActivity;
+
+import android.annotation.TargetApi;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.location.Location;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.support.v4.app.NotificationCompat;
+
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -29,17 +42,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+
+import android.os.Build;
+import android.widget.Button;
+
 import android.widget.ProgressBar;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import android.widget.ViewSwitcher;
 
+import com.myntra.whattowear.CoverFlowAdapter;
+import com.myntra.whattowear.ProductEntity;
 import com.squareup.picasso.Picasso;
+import com.myntra.whattowear.WeatherData;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,10 +98,10 @@ public class MainActivity extends ActionBarActivity {
     static TextView humidity;
     static TextView staticMeetingsText;
     static TextView calenderData;
+
     static TextView weatherText;
     static TextView meetingText;
     static ImageView weatherIcon;
-    static ProgressBar spinner;
     static ProgressBar spinner2;
     static String[] colors;
     static ActionBar bar;
@@ -103,6 +126,10 @@ public class MainActivity extends ActionBarActivity {
     private CoverFlowAdapter mAdapter2;
     private ArrayList<ProductEntity> mData = new ArrayList<>(0);
     private ArrayList<ProductEntity> mDataBottom = new ArrayList<>(0);
+
+    static Button btn;
+    static ProgressBar spinner;
+    int notification_id = 1;
 
 
     SparseArray<String> weatherArray = new SparseArray<String>()
@@ -237,7 +264,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         if(!resumeLoaded){
-            MyLocation.LocationResult locationResult = new MyLocation.LocationResult(){
+            com.myntra.whatToWear.MyLocation.LocationResult locationResult = new com.myntra.whatToWear.MyLocation.LocationResult(){
                 @Override
                 public void gotLocation(Location loc){
                     if(loc != null){
@@ -274,7 +301,7 @@ public class MainActivity extends ActionBarActivity {
 
                 }
             };
-            MyLocation myLocation = new MyLocation();
+            com.myntra.whatToWear.MyLocation myLocation = new com.myntra.whatToWear.MyLocation();
             myLocation.getLocation(this, locationResult);
             resumeLoaded = true;
         }
@@ -360,6 +387,9 @@ public class MainActivity extends ActionBarActivity {
             topCard.setCardElevation(10);
             bottomCard = (CardView)rootView.findViewById(R.id.card_view_bottom);
             bottomCard.setCardElevation(10);
+
+
+            btn = (Button) rootView.findViewById(R.id.button_hello);
 
             return rootView;
         }
@@ -636,6 +666,7 @@ public class MainActivity extends ActionBarActivity {
 //                weatherCondition.setText(w.getWeathercondition());
                 weatherText.setText(Utils.toTitleCase(w.getWeatherdetail()));
                 spinner.setVisibility(View.GONE);
+
                 colors = Utils.getColorFromWeatherCode(w.getWeathercode());
                 colorFilterIcon = new PorterDuffColorFilter(Color.parseColor(colors[1]), PorterDuff.Mode.SRC_ATOP);
                 weatherIcon.setImageResource(Utils.getImageId(getApplicationContext(), weatherArray.get(w.getWeathercode())));
@@ -658,10 +689,11 @@ public class MainActivity extends ActionBarActivity {
             if(!top.isEmpty() && !bottom.isEmpty()){
                 spinner2.setVisibility(View.GONE);
                 clothesLoader.setVisibility(View.GONE);
+
             }
-
-
         }
+
+
     }
 
     public class FetchTopTask extends AsyncTask<String, Void, String[]>{
